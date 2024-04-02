@@ -4,12 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { User } from './users/entities/user.entity';
-import { Location } from './location/address/entities/location.entity';
-import { Address } from './location/address/entities/address.entity';
+
 
 import { UsersModule } from './users/users.module';
-import { LocationdataModule } from './location/locationdata/locationdata.module';
-import { AddressModule } from './location/address/address.module';
+
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
@@ -40,8 +38,6 @@ import { Professional } from './professionals/entities/professional.entity';
         entities: [
           
           User,
-          Location,
-          Address,
           News,
           Professional,
         ],
@@ -52,9 +48,7 @@ import { Professional } from './professionals/entities/professional.entity';
     AuthModule,
 
     UsersModule,
-    LocationdataModule,
-    AddressModule,
-  
+
 
     NewsModule,
 
