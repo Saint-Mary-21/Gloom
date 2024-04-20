@@ -21,6 +21,7 @@ import { JwtAuthGuard } from './auth/guards/jwt-auth.guard';
 import { RolesGuard } from './auth/guards/roles.guard';
 import { ProfessionalsModule } from './professionals/professionals.module';
 import { Professional } from './professionals/entities/professional.entity';
+import { Service } from './professionals/entities/Service.entity';
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { Professional } from './professionals/entities/professional.entity';
           User,
           News,
           Professional,
+          Service,
         ],
         synchronize: true,
       }),
@@ -53,6 +55,8 @@ import { Professional } from './professionals/entities/professional.entity';
     NewsModule,
 
     ProfessionalsModule,
+
+  
   ],
   controllers: [AppController],
   providers: [

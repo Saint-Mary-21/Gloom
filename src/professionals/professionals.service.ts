@@ -5,11 +5,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Professional } from './entities/professional.entity';
 import { Repository } from 'typeorm';
 import { UsersService } from 'src/users/users.service';
+import { CreateServiceDto } from './dto/create-Service.dto';
+import { Service } from './entities/Service.entity';
+
 
 @Injectable()
 export class ProfessionalsService {
 
   constructor(
+    @InjectRepository(Service) private repoService: Repository<Service>,
     @InjectRepository(Professional) private repo: Repository<Professional>,
     private userService: UsersService,
   ) {}
@@ -23,8 +27,17 @@ export class ProfessionalsService {
 
   }
 
+  async createService(createServiceDto: CreateServiceDto) {
+    const ServiceEntity = this.repoService.create(createServiceDto);
+    return await this.repoService.save(ServiceEntity);
+ }
+
   findAll() {
     return `This action returns all professionals`;
+  }
+
+  findAllService() {
+    return this.repoService.find();
   }
 
   findOne(id: number) {

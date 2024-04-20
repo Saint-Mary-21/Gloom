@@ -3,6 +3,8 @@ import { ProfessionalsService } from './professionals.service';
 import { CreateProfessionalDto } from './dto/create-professional.dto';
 import { UpdateProfessionalDto } from './dto/update-professional.dto';
 import { Public } from 'src/auth/jwt-public';
+import { CreateServiceDto } from './dto/create-Service.dto';
+import { Service } from './entities/Service.entity';
 
 @Public()
 
@@ -15,9 +17,19 @@ export class ProfessionalsController {
     return this.professionalsService.create(createProfessionalDto);
   }
 
+  @Post('/service/create')
+  createService(@Body() createServicedto: CreateServiceDto) {
+    return this.professionalsService.createService(createServicedto);
+  }
+  
   @Get()
   findAll() {
     return this.professionalsService.findAll();
+  }
+
+  @Get('service')
+  findAllService() {
+    return this.professionalsService.findAllService();
   }
 
   @Get(':id')
